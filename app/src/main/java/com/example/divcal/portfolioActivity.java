@@ -14,7 +14,10 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.TotalActivity;
+
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 
 import yahoofinance.Stock;
@@ -33,7 +36,11 @@ public class portfolioActivity<TAG> extends AppCompatActivity {
             e.printStackTrace();
         }
         BigDecimal price = stock.getQuote().getPrice();
+
+        price = price.setScale(2, RoundingMode.CEILING);
         return "$" + price.toString();
+
+
     }
 
     @Override

@@ -51,6 +51,7 @@ public class TotalActivity extends AppCompatActivity {
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                TextView portfolioVal  = (TextView) findViewById(R.id.portfolioValueId);
                 TextView growthValue = (TextView) findViewById(R.id.yearlyGrowthId);
                 TextView timeFrameValue = (TextView) findViewById(R.id.timeFrameId);
                 TextView expected = (TextView) findViewById(R.id.expectedGrowthId);
@@ -59,9 +60,12 @@ public class TotalActivity extends AppCompatActivity {
 
                 String growth = growthValue.getText().toString();
                 String timeFrame = timeFrameValue.getText().toString();
+                String portfolio = portfolioVal.getText().toString();
+                portfolio = portfolio.substring(1);
+                double newPortfolio = Double.parseDouble(portfolio);
 
                 if ( !growth.isEmpty() && !timeFrame.isEmpty() ){
-                    String growthCalc = growthCalculation(growth, timeFrame, finalSum);
+                    String growthCalc = growthCalculation(growth, timeFrame, newPortfolio);
                     expected.setText(growthCalc);
                     difference.setText("+" + Double.toString(twoDecimalplaces(Double.parseDouble(growthCalc) - finalSum)));
                     percentage.setText( "(+" + Double.toString(twoDecimalplaces(100 *( (Double.parseDouble(growthCalc) / finalSum) - 1))) + "%)"   );
