@@ -18,14 +18,16 @@ import com.example.divcal.portfolioActivity;
 import java.util.ArrayList;
 
 public class TotalActivity extends AppCompatActivity {
+    public double twoDecimalplaces(double num){
+        return (double) Math.round(num * 100) / 100;
+    }
+
     public String growthCalculation(String growthString, String timeFrameString, Double sum){
         double result;
         double growth = 1 + Double.parseDouble(growthString);
         int timeFrame = Integer.parseInt(timeFrameString);
-
         result = sum * Math.pow(growth, timeFrame);
-        result= (double) Math.round(result * 100) / 100;
-        return Double.toString(result);
+        return Double.toString(twoDecimalplaces(result));
     }
 
     @Override
@@ -39,7 +41,7 @@ public class TotalActivity extends AppCompatActivity {
         for(portfolioActivity.Stocks stock: portfolioStocks){
             sum += Double.parseDouble(stock.getPrice().substring(1)) * stock.getShares();
         }
-        sum = (double) Math.round(sum * 100) / 100;
+        sum = twoDecimalplaces(sum);
 
         portfolioValue.setText("$" + Double.toString(sum));
 
@@ -52,12 +54,17 @@ public class TotalActivity extends AppCompatActivity {
                 TextView growthValue = (TextView) findViewById(R.id.yearlyGrowthId);
                 TextView timeFrameValue = (TextView) findViewById(R.id.timeFrameId);
                 TextView expected = (TextView) findViewById(R.id.expectedGrowthId);
+                TextView difference = (TextView) findViewById(R.id.growthDifferenceId);
+                TextView percentage = (TextView) findViewById(R.id.percentageGrowthId);
 
                 String growth = growthValue.getText().toString();
                 String timeFrame = timeFrameValue.getText().toString();
 
                 if ( !growth.isEmpty() && !timeFrame.isEmpty() ){
-                    expected.setText(growthCalculation(growth, timeFrame, finalSum));
+                    String growthCalc = growthCalculation(growth, timeFrame, finalSum);
+                    expected.setText(growthCalc);
+                    difference.setText("+" + Double.toString(twoDecimalplaces(Double.parseDouble(growthCalc) - finalSum)));
+                    percentage.setText( "(+" + Double.toString(twoDecimalplaces(100 *( (Double.parseDouble(growthCalc) / finalSum) - 1))) + "%)"   );
                 }
             }
         });
