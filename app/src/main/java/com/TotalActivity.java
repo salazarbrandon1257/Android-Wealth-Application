@@ -24,13 +24,6 @@ public class TotalActivity extends AppCompatActivity {
         return (double) Math.round(num * 100) / 100;
     }
 
-    public String growthCalculation(String growthString, String timeFrameString, Double sum){
-        double result;
-        double growth = 1 + Double.parseDouble(growthString);
-        int timeFrame = Integer.parseInt(timeFrameString);
-        result = sum * Math.pow(growth, timeFrame);
-        return Double.toString(twoDecimalplaces(result));
-    }
     public String yearlyInvestCalculation(String growthString, String timeFrameString, Double sum1, String yearly){
         BigDecimal result;
         BigDecimal sum = BigDecimal.valueOf(sum1);
@@ -95,8 +88,8 @@ public class TotalActivity extends AppCompatActivity {
                 }else if(!growth.isEmpty() && !timeFrame.isEmpty() && !yearlyInvest.isEmpty() ){
                     String investCalc = yearlyInvestCalculation(growth, timeFrame, newPortfolio, yearlyInvest);
                     expected.setText(investCalc);
-                    difference.setText("+" + Double.toString(twoDecimalplaces(Double.parseDouble(investCalc) - newPortfolio)));
-                    percentage.setText( "(+" + Double.toString(twoDecimalplaces(100 *( (Double.parseDouble(investCalc) / newPortfolio) - 1))) + "%)"   );
+                    difference.setText("+" + Double.toString(twoDecimalplaces(Double.parseDouble(investCalc) - (Double.parseDouble(yearlyInvest)*Double.parseDouble(timeFrame)))));
+                    percentage.setText( "(+" + Double.toString(twoDecimalplaces(100 *( (Double.parseDouble(investCalc) / (Double.parseDouble(yearlyInvest)*Double.parseDouble(timeFrame))) - 1))) + "%)"   );
                 }
             }
         });
