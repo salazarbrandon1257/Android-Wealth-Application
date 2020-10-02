@@ -29,12 +29,19 @@ public class TotalActivity extends AppCompatActivity {
         result = sum * Math.pow(growth, timeFrame);
         return Double.toString(twoDecimalplaces(result));
     }
+    public String yearlyInvestCalculation(String growthString, String timeFrameString, Double sum, Double yearly){
+        double result;
+        double growth = 1 + Double.parseDouble(growthString);
+        int timeFrame = Integer.parseInt(timeFrameString);
+        result = sum * (Math.pow(growth, timeFrame) - growth) / (growth - 1);
+        return Double.toString(twoDecimalplaces(result));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_total);
-        TextView portfolioValue  = (TextView) findViewById(R.id.portfolioValueId);
+        final TextView portfolioValue  = (TextView) findViewById(R.id.portfolioValueId);
 
         double sum = 0;
         ArrayList<portfolioActivity.Stocks> portfolioStocks = MainActivity.contactClass.getContacts();
@@ -47,29 +54,40 @@ public class TotalActivity extends AppCompatActivity {
 
 
         Button btn3 = (Button) findViewById(R.id.calculateButtonId);
-        final double finalSum = sum;
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 TextView portfolioVal  = (TextView) findViewById(R.id.portfolioValueId);
                 TextView growthValue = (TextView) findViewById(R.id.yearlyGrowthId);
                 TextView timeFrameValue = (TextView) findViewById(R.id.timeFrameId);
+                TextView yearlyInvestValue = (TextView) findViewById(R.id.yearlyInvestId);
                 TextView expected = (TextView) findViewById(R.id.expectedGrowthId);
                 TextView difference = (TextView) findViewById(R.id.growthDifferenceId);
                 TextView percentage = (TextView) findViewById(R.id.percentageGrowthId);
 
                 String growth = growthValue.getText().toString();
                 String timeFrame = timeFrameValue.getText().toString();
+                String yearlyInvest = yearlyInvestValue.getText().toString();
                 String portfolio = portfolioVal.getText().toString();
                 portfolio = portfolio.substring(1);
                 double newPortfolio = Double.parseDouble(portfolio);
 
-                if ( !growth.isEmpty() && !timeFrame.isEmpty() ){
+                if ( !growth.isEmpty() && !timeFrame.isEmpty() && yearlyInvest.isEmpty() ){
                     String growthCalc = growthCalculation(growth, timeFrame, newPortfolio);
                     expected.setText(growthCalc);
-                    difference.setText("+" + Double.toString(twoDecimalplaces(Double.parseDouble(growthCalc) - finalSum)));
-                    percentage.setText( "(+" + Double.toString(twoDecimalplaces(100 *( (Double.parseDouble(growthCalc) / finalSum) - 1))) + "%)"   );
+                    difference.setText("+" + Double.toString(twoDecimalplaces(Double.parseDouble(growthCalc) - newPortfolio)));
+                    percentage.setText( "(+" + Double.toString(twoDecimalplaces(100 *( (Double.parseDouble(growthCalc) / newPortfolio) - 1))) + "%)"   );
+                }else if(!growth.isEmpty() && !timeFrame.isEmpty() && !yearlyInvest.isEmpty() ){
+
                 }
+            }
+        });
+        ImageButton btn4 = (ImageButton) findViewById(R.id.refreshId);
+        final double finalSum = sum;
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                portfolioValue.setText("$" + Double.toString(finalSum));
             }
         });
     }

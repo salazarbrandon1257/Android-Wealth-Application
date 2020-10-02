@@ -22,35 +22,7 @@
         app:fontFamily="monospace"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" /><![CDATA[
-
-
-
-    />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    ]]>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/yearlyGrowthId"
@@ -58,12 +30,12 @@
         android:layout_height="33dp"
         android:layout_marginStart="67dp"
         android:layout_marginLeft="67dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="19dp"
         android:layout_marginEnd="41dp"
         android:layout_marginRight="41dp"
         android:background="#FFFFFF"
         android:ems="10"
-        android:hint=".05 ..."
+        android:hint=".05..."
         android:inputType="textPersonName"
         android:textColor="#000000"
         android:textSize="22sp"
@@ -79,12 +51,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="228dp"
-        android:layout_marginBottom="10dp"
         android:text="Portfolio:"
         android:textColor="#FFFFFF"
         android:textSize="22sp"
         app:fontFamily="monospace"
-        app:layout_constraintBottom_toTopOf="@+id/textView11"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -112,15 +82,16 @@
 
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="11dp"
         android:layout_marginEnd="195dp"
         android:layout_marginRight="195dp"
         android:textColor="#FFFFFF"
         android:textSize="35sp"
         app:fontFamily="monospace"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+        app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
     <TextView
         android:id="@+id/textView7"
@@ -128,7 +99,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="35dp"
         android:text="Yearly Growth:"
         android:textColor="#FFFFFF"
         android:textSize="22sp"
@@ -137,18 +108,21 @@
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginRight="49dp"
         android:text="Expected Growth:"
         android:textColor="#FFFFFF"
         android:textSize="22sp"
         app:fontFamily="monospace"
+        app:layout_constraintEnd_toStartOf="@+id/calculateButtonId"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
     <EditText
         android:id="@+id/timeFrameId"
@@ -156,12 +130,12 @@
         android:layout_height="33dp"
         android:layout_marginStart="27dp"
         android:layout_marginLeft="27dp"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="41dp"
         android:layout_marginRight="41dp"
         android:background="#FFFFFF"
         android:ems="10"
-        android:hint="10 ..."
+        android:hint="10..."
         android:inputType="textPersonName"
         android:textColor="#000000"
         android:textSize="22sp"
@@ -169,19 +143,49 @@
         app:layout_constraintStart_toEndOf="@+id/textView13"
         app:layout_constraintTop_toBottomOf="@+id/yearlyGrowthId" />
 
+    <EditText
+        android:id="@+id/yearlyInvestId"
+        android:layout_width="100dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="41dp"
+        android:layout_marginRight="41dp"
+        android:background="#FFFFFF"
+        android:ems="10"
+        android:hint="1000..."
+        android:inputType="textPersonName"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeFrameId" />
+
     <TextView
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="35dp"
         android:text="TimeFrame(Years):"
         android:textColor="#FFFFFF"
         android:textSize="22sp"
         app:fontFamily="monospace"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="35dp"
+        android:text="Yearly Investment:"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        app:fontFamily="monospace"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <ImageButton
         android:id="@+id/imageButton3"
@@ -197,19 +201,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/settings" />
 
+
+    <ImageButton
+        android:id="@+id/refreshId"
+        android:layout_width="50dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="280dp"
+        android:layout_marginRight="280dp"
+        android:layout_marginBottom="16dp"
+        android:background="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/refresh" />
+
     <Button
         android:id="@+id/calculateButtonId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="41dp"
-        android:layout_marginLeft="41dp"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginRight="42dp"
         android:text="Calculate"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/timeFrameId" />
+        app:layout_constraintTop_toBottomOf="@+id/yearlyInvestId" />
 
     <TextView
         android:id="@+id/growthDifferenceId"
