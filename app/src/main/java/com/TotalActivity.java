@@ -15,6 +15,8 @@ import com.example.divcal.R;
 import com.example.divcal.StockAdapter;
 import com.example.divcal.portfolioActivity;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 
 public class TotalActivity extends AppCompatActivity {
@@ -29,12 +31,24 @@ public class TotalActivity extends AppCompatActivity {
         result = sum * Math.pow(growth, timeFrame);
         return Double.toString(twoDecimalplaces(result));
     }
-    public String yearlyInvestCalculation(String growthString, String timeFrameString, Double sum, Double yearly){
-        double result;
-        double growth = 1 + Double.parseDouble(growthString);
+    public String yearlyInvestCalculation(String growthString, String timeFrameString, Double sum1, String yearly){
+        BigDecimal result;
+        BigDecimal sum = BigDecimal.valueOf(sum1);
+        BigDecimal growth = BigDecimal.valueOf(1 + Double.parseDouble(growthString));
+        BigDecimal yearlyInvest = BigDecimal.valueOf(Double.parseDouble(yearly));
         int timeFrame = Integer.parseInt(timeFrameString);
-        result = sum * (Math.pow(growth, timeFrame) - growth) / (growth - 1);
-        return Double.toString(twoDecimalplaces(result));
+        if (sum1 == 0){
+            Toast.makeText(getApplicationContext(), "No Sum", Toast.LENGTH_SHORT).show();
+            result = yearlyInvest.multiply(growth.pow( timeFrame + 1).subtract(growth).divide(growth.subtract(BigDecimal.valueOf(1)),4, RoundingMode.CEILING));
+        }else{
+            Toast.makeText(getApplicationContext(), "Sum Exists", Toast.LENGTH_SHORT).show();
+            result = yearlyInvest.multiply(growth.pow(timeFrame + 1).subtract(growth)).divide(growth.subtract(BigDecimal.valueOf(1)),2, RoundingMode.CEILING);
+            Toast.makeText(getApplicationContext(), result.toString(), Toast.LENGTH_SHORT).show();
+            BigDecimal initial = growth.pow(timeFrame).multiply(sum);
+            result = result.add(initial);
+
+        }
+        return result.setScale(2, RoundingMode.CEILING).toString();
     }
 
     @Override
@@ -73,12 +87,16 @@ public class TotalActivity extends AppCompatActivity {
                 double newPortfolio = Double.parseDouble(portfolio);
 
                 if ( !growth.isEmpty() && !timeFrame.isEmpty() && yearlyInvest.isEmpty() ){
-                    String growthCalc = growthCalculation(growth, timeFrame, newPortfolio);
-                    expected.setText(growthCalc);
-                    difference.setText("+" + Double.toString(twoDecimalplaces(Double.parseDouble(growthCalc) - newPortfolio)));
-                    percentage.setText( "(+" + Double.toString(twoDecimalplaces(100 *( (Double.parseDouble(growthCalc) / newPortfolio) - 1))) + "%)"   );
+                    // String growthCalc = growthCalculation(growth, timeFrame, newPortfolio);
+                    String investCalc = yearlyInvestCalculation(growth, timeFrame, newPortfolio, "0");
+                    expected.setText(investCalc);
+                    difference.setText("+" + Double.toString(twoDecimalplaces(Double.parseDouble(investCalc) - newPortfolio)));
+                    percentage.setText( "(+" + Double.toString(twoDecimalplaces(100 *( (Double.parseDouble(investCalc) / newPortfolio) - 1))) + "%)"   );
                 }else if(!growth.isEmpty() && !timeFrame.isEmpty() && !yearlyInvest.isEmpty() ){
-
+                    String investCalc = yearlyInvestCalculation(growth, timeFrame, newPortfolio, yearlyInvest);
+                    expected.setText(investCalc);
+                    difference.setText("+" + Double.toString(twoDecimalplaces(Double.parseDouble(investCalc) - newPortfolio)));
+                    percentage.setText( "(+" + Double.toString(twoDecimalplaces(100 *( (Double.parseDouble(investCalc) / newPortfolio) - 1))) + "%)"   );
                 }
             }
         });
