@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.divcal.MainActivity;
 import com.example.divcal.R;
@@ -17,11 +16,17 @@ import com.example.divcal.portfolioActivity;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class TotalActivity extends AppCompatActivity {
     public double twoDecimalplaces(double num){
         return (double) Math.round(num * 100) / 100;
+    }
+
+    public static String currencyFormat(String amount) {
+        DecimalFormat formatter = new DecimalFormat("###,###,##0.00");
+        return formatter.format(Double.parseDouble(amount));
     }
 
     public String yearlyInvestCalculation(String growthString, String timeFrameString, Double sum1, String yearly){
@@ -31,15 +36,11 @@ public class TotalActivity extends AppCompatActivity {
         BigDecimal yearlyInvest = BigDecimal.valueOf(Double.parseDouble(yearly));
         int timeFrame = Integer.parseInt(timeFrameString);
         if (sum1 == 0){
-            Toast.makeText(getApplicationContext(), "No Sum", Toast.LENGTH_SHORT).show();
             result = yearlyInvest.multiply(growth.pow( timeFrame + 1).subtract(growth).divide(growth.subtract(BigDecimal.valueOf(1)),4, RoundingMode.CEILING));
         }else{
-            Toast.makeText(getApplicationContext(), "Sum Exists", Toast.LENGTH_SHORT).show();
             result = yearlyInvest.multiply(growth.pow(timeFrame + 1).subtract(growth)).divide(growth.subtract(BigDecimal.valueOf(1)),2, RoundingMode.CEILING);
-            Toast.makeText(getApplicationContext(), result.toString(), Toast.LENGTH_SHORT).show();
             BigDecimal initial = growth.pow(timeFrame).multiply(sum);
             result = result.add(initial);
-
         }
         return result.setScale(2, RoundingMode.CEILING).toString();
     }
@@ -82,14 +83,14 @@ public class TotalActivity extends AppCompatActivity {
                 if ( !growth.isEmpty() && !timeFrame.isEmpty() && yearlyInvest.isEmpty() ){
                     // String growthCalc = growthCalculation(growth, timeFrame, newPortfolio);
                     String investCalc = yearlyInvestCalculation(growth, timeFrame, newPortfolio, "0");
-                    expected.setText(investCalc);
+                    expected.setText(currencyFormat(investCalc));
                     difference.setText("+" + Double.toString(twoDecimalplaces(Double.parseDouble(investCalc) - newPortfolio)));
                     percentage.setText( "(+" + Double.toString(twoDecimalplaces(100 *( (Double.parseDouble(investCalc) / newPortfolio) - 1))) + "%)"   );
                 }else if(!growth.isEmpty() && !timeFrame.isEmpty() && !yearlyInvest.isEmpty() ){
                     String investCalc = yearlyInvestCalculation(growth, timeFrame, newPortfolio, yearlyInvest);
-                    expected.setText(investCalc);
-                    difference.setText("+" + Double.toString(twoDecimalplaces(Double.parseDouble(investCalc) - (Double.parseDouble(yearlyInvest)*Double.parseDouble(timeFrame)))));
-                    percentage.setText( "(+" + Double.toString(twoDecimalplaces(100 *( (Double.parseDouble(investCalc) / (Double.parseDouble(yearlyInvest)*Double.parseDouble(timeFrame))) - 1))) + "%)"   );
+                    expected.setText("+" + currencyFormat(investCalc));
+                    difference.setText("+" + currencyFormat(Double.toString(twoDecimalplaces(Double.parseDouble(investCalc) - (Double.parseDouble(yearlyInvest)*Double.parseDouble(timeFrame))))));
+                    percentage.setText( "(+" + currencyFormat(Double.toString(twoDecimalplaces(100 *( (Double.parseDouble(investCalc) / (Double.parseDouble(yearlyInvest)*Double.parseDouble(timeFrame))) - 1)))) + "%)"   );
                 }
             }
         });
