@@ -40,7 +40,7 @@ public class ChartsActivity extends AppCompatActivity {
         tvJava = findViewById(R.id.tvJava);
         pieChart = findViewById(R.id.piechart);
         stockName1 = findViewById(R.id.stockNameOneId);
-        stockName2 = findViewById(R.id.stockNameTwoID);
+        stockName2 = findViewById(R.id.stockNameTwoId);
         stockName3 = findViewById(R.id.stockNameThreeID);
         stockName4 = findViewById(R.id.stockNameFourID);
 
