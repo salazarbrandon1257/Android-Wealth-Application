@@ -88,7 +88,7 @@ public class TotalActivity extends AppCompatActivity {
                     percentage.setText( "(+" + Double.toString(twoDecimalplaces(100 *( (Double.parseDouble(investCalc) / newPortfolio) - 1))) + "%)"   );
                 }else if(!growth.isEmpty() && !timeFrame.isEmpty() && !yearlyInvest.isEmpty() ){
                     String investCalc = yearlyInvestCalculation(growth, timeFrame, newPortfolio, yearlyInvest);
-                    expected.setText("+" + currencyFormat(investCalc));
+                    expected.setText("$" + currencyFormat(investCalc));
                     difference.setText("+" + currencyFormat(Double.toString(twoDecimalplaces(Double.parseDouble(investCalc) - (Double.parseDouble(yearlyInvest)*Double.parseDouble(timeFrame))))));
                     percentage.setText( "(+" + currencyFormat(Double.toString(twoDecimalplaces(100 *( (Double.parseDouble(investCalc) / (Double.parseDouble(yearlyInvest)*Double.parseDouble(timeFrame))) - 1)))) + "%)"   );
                 }
