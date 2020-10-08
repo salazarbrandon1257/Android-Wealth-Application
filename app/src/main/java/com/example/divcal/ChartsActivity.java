@@ -58,17 +58,15 @@ public class ChartsActivity extends AppCompatActivity {
         //    System.out.println(list.get(i));
         //}
         if(list.size() > 0) {
-            Toast.makeText(getApplicationContext(), list.get(0).toString(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), list.get(0).toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), stockMap.get(list.get(list.size() - 1)), Toast.LENGTH_SHORT).show();
         }
-
         // Creating a method setData()
         // to set the text in text view and pie chart
         setData();
     }
 
-    private void setData()
-    {
-
+    private void setData() {
         // Set the percentage of language used
         tvR.setText(Integer.toString(40));
         tvPython.setText(Integer.toString(30));
