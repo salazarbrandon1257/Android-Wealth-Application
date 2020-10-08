@@ -23,7 +23,7 @@ public class ChartsActivity extends AppCompatActivity {
     ArrayList<String> nameList = new ArrayList<>();
     HashMap<Double, String> stockMap = new HashMap<Double, String>();
 
-    TextView tvR, tvPython, tvCPP, tvJava;
+    TextView tvR, tvPython, tvCPP, tvJava, stockName1, stockName2, stockName3, stockName4;
     PieChart pieChart;
 
     @Override
@@ -39,6 +39,10 @@ public class ChartsActivity extends AppCompatActivity {
         tvCPP = findViewById(R.id.tvCPP);
         tvJava = findViewById(R.id.tvJava);
         pieChart = findViewById(R.id.piechart);
+        stockName1 = findViewById(R.id.stockNameOneId);
+        stockName2 = findViewById(R.id.stockNameTwoID);
+        stockName3 = findViewById(R.id.stockNameThreeID);
+        stockName4 = findViewById(R.id.stockNameFourID);
 
         final TextView portfolioValue  = (TextView) findViewById(R.id.portfolioValueId);
 
@@ -63,25 +67,28 @@ public class ChartsActivity extends AppCompatActivity {
         }
         // Creating a method setData()
         // to set the text in text view and pie chart
-        setData();
+        setData(list, stockMap);
     }
 
-    private void setData() {
+    private void setData(ArrayList<Double> list, HashMap<Double, String> stockMap) {
         // Set the percentage of language used
         tvR.setText(Integer.toString(40));
         tvPython.setText(Integer.toString(30));
         tvCPP.setText(Integer.toString(5));
         tvJava.setText(Integer.toString(25));
+        if(stockMap.size() > 0){stockName1.setText(stockMap.get(list.get(list.size() - 1)));}
+        if(stockMap.size() > 1){stockName2.setText(stockMap.get(list.get(list.size() - 2)));}
+        if(stockMap.size() > 2){stockName3.setText(stockMap.get(list.get(list.size() - 3)));}
+        if(stockMap.size() > 3){stockName4.setText(stockMap.get(list.get(list.size() - 4)));}
 
         // Set the data and color to the pie chart
         pieChart.addPieSlice(
-                new PieModel(
-                        "R",
+                new PieModel("lk",
                         Integer.parseInt(tvR.getText().toString()),
                         Color.parseColor("#FFA726")));
         pieChart.addPieSlice(
                 new PieModel(
-                        "Python",
+                        "Pythonkl",
                         Integer.parseInt(tvPython.getText().toString()),
                         Color.parseColor("#66BB6A")));
         pieChart.addPieSlice(

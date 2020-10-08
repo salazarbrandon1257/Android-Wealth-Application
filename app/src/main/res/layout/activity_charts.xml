@@ -68,10 +68,10 @@
 
                     <!--Text view to display R -->
                     <TextView
+                        android:id="@+id/stockNameOneId"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
-                        android:text="R" />
+                        android:paddingLeft="10dp" />
 
                 </LinearLayout>
 
@@ -90,10 +90,10 @@
 
                     <!--Text view to display python text -->
                     <TextView
+                        android:id="@+id/stockNameTwoID"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
-                        android:text="Python" />
+                        android:paddingLeft="10dp" />
 
                 </LinearLayout>
 
@@ -112,10 +112,10 @@
 
                     <!--Text view to display C++ text -->
                     <TextView
+                        android:id="@+id/stockNameThreeID"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
-                        android:text="C++" />
+                        android:paddingLeft="10dp" />
 
                 </LinearLayout>
 
@@ -134,10 +134,10 @@
 
                     <!--Text view to display Java text -->
                     <TextView
+                        android:id="@+id/stockNameFourID"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
-                        android:text="Java" />
+                        android:paddingLeft="10dp" />
 
                 </LinearLayout>
 
