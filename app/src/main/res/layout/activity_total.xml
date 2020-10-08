@@ -100,7 +100,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/settingsId"
         android:layout_width="50dp"
         android:layout_height="54dp"
         android:layout_marginStart="346dp"
@@ -125,7 +125,7 @@
         android:layout_marginBottom="16dp"
         android:background="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton3"
+        app:layout_constraintEnd_toStartOf="@+id/settingsId"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/refresh" />
 
