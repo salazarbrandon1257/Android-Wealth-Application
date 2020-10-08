@@ -7,11 +7,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.PieModel;
 
-public class ChartsActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
 
+import javax.xml.transform.dom.DOMLocator;
+
+public class ChartsActivity extends AppCompatActivity {
+    ArrayList<String> nameList = new ArrayList<>();
+    HashMap<Double, String> stockMap = new HashMap<Double, String>();
 
     TextView tvR, tvPython, tvCPP, tvJava;
     PieChart pieChart;
@@ -21,7 +31,6 @@ public class ChartsActivity extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_charts);
-
         // Link those objects with their
         // respective id's that
         // we have given in .XML file
@@ -30,6 +39,27 @@ public class ChartsActivity extends AppCompatActivity {
         tvCPP = findViewById(R.id.tvCPP);
         tvJava = findViewById(R.id.tvJava);
         pieChart = findViewById(R.id.piechart);
+
+        final TextView portfolioValue  = (TextView) findViewById(R.id.portfolioValueId);
+
+        double sum = 0;
+
+        ArrayList<portfolioActivity.Stocks> portfolioStocks = MainActivity.contactClass.getContacts();
+        for(portfolioActivity.Stocks stock: portfolioStocks){
+            stockMap.put(Double.parseDouble(stock.getPrice().substring(1)) * stock.getShares(), stock.getName());
+
+            sum += Double.parseDouble(stock.getPrice().substring(1)) * stock.getShares();
+        }
+        Collection<Double> values= stockMap.keySet();
+        ArrayList<Double> list= new ArrayList<Double>(values);
+        Collections.sort(list);
+
+        //for (int i=0; i < 4; i++) {
+        //    System.out.println(list.get(i));
+        //}
+        if(list.size() > 0) {
+            Toast.makeText(getApplicationContext(), list.get(0).toString(), Toast.LENGTH_SHORT).show();
+        }
 
         // Creating a method setData()
         // to set the text in text view and pie chart
