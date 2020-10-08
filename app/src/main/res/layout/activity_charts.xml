@@ -28,12 +28,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="#000000"
             android:orientation="horizontal"
             android:weightSum="2">
 
             <!--Pie chart to display the data-->
 
-            <org.eazegraph.lib.charts.PieChart xmlns:app="http://schemas.android.com/apk/res-auto"
+            <org.eazegraph.lib.charts.PieChart
                 android:id="@+id/piechart"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -41,9 +42,9 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
                 android:layout_weight="1"
-                android:padding="6dp"
+                android:background="#000000"
 
-                />
+                android:padding="6dp" />
 
             <!--Creating another linear layout -->
             <!-- to display pie chart details -->
@@ -52,6 +53,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"
                 android:layout_weight="1"
+                android:background="#000000"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
@@ -71,7 +73,9 @@
                         android:id="@+id/stockNameOneId"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="10dp" />
+                        android:paddingLeft="10dp"
+                        android:textColor="#FFFFFF"
+                        app:fontFamily="monospace" />
 
                 </LinearLayout>
 
@@ -93,7 +97,9 @@
                         android:id="@+id/stockNameTwoID"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="10dp" />
+                        android:paddingLeft="10dp"
+                        android:textColor="#FFFFFF"
+                        app:fontFamily="monospace" />
 
                 </LinearLayout>
 
@@ -115,7 +121,9 @@
                         android:id="@+id/stockNameThreeID"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="10dp" />
+                        android:paddingLeft="10dp"
+                        android:textColor="#FFFFFF"
+                        app:fontFamily="monospace" />
 
                 </LinearLayout>
 
@@ -137,7 +145,9 @@
                         android:id="@+id/stockNameFourID"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="10dp" />
+                        android:paddingLeft="10dp"
+                        android:textColor="#FFFFFF"
+                        app:fontFamily="monospace" />
 
                 </LinearLayout>
 
@@ -167,6 +177,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#000000"
             android:orientation="vertical">
 
             <!--Text view to use of -->
@@ -203,7 +214,10 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
                     android:text="R"
-                    android:textSize="18sp" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:typeface="monospace"
+                    app:fontFamily="monospace" />
 
                 <!--Text view to display the -->
                 <!-- percentage of programming language -->
@@ -216,9 +230,10 @@
                     android:fontFamily="sans-serif-light"
                     android:text="0"
                     android:textAlignment="textEnd"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/design_default_color_background"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:fontFamily="monospace" />
             </RelativeLayout>
 
             <!--View to display the line-->
@@ -242,7 +257,10 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
                     android:text="Python"
-                    android:textSize="18sp" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:typeface="monospace"
+                    app:fontFamily="monospace" />
 
                 <!--Text view to display the percentage -->
                 <!-- of programming language used. -->
@@ -258,7 +276,8 @@
                     android:textAlignment="textEnd"
                     android:textColor="@color/colorAccent"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:fontFamily="monospace" />
 
             </RelativeLayout>
 
@@ -282,7 +301,9 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
                     android:text="C++"
-                    android:textSize="18sp" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    app:fontFamily="monospace" />
 
                 <!--Text view to display the percentage -->
                 <!-- of programming language used. -->
@@ -321,7 +342,9 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
                     android:text="Java"
-                    android:textSize="18sp" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    app:fontFamily="monospace" />
 
                 <!--Text view to display the percentage -->
                 <!-- of programming language used. -->
