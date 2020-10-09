@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context=".SettingsActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="85dp"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginEnd="84dp"
+        android:layout_marginRight="84dp"
+        android:scrollHorizontally="false"
+        android:text="Settings"
+        android:textColor="#FFFFFF"
+        android:textSize="28sp"
+        android:typeface="sans"
+        app:fontFamily="monospace"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Icons by Icons8"
+        android:textColor="#FFFFFF"
+        app:fontFamily="monospace"
+        tools:layout_editor_absoluteX="142dp"
+        tools:layout_editor_absoluteY="211dp" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Link at: https://icons8.com"
+        android:textColor="#FFFFFF"
+        app:fontFamily="monospace"
+        tools:layout_editor_absoluteX="92dp"
+        tools:layout_editor_absoluteY="262dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

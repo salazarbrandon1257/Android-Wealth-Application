@@ -46,6 +46,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, ChartsActivity.class));
             }
         });
+        ImageButton btn4 = (ImageButton) findViewById(R.id.settingsId);
+
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+            }
+        });
 
     }
 
