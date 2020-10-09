@@ -29,20 +29,29 @@
         android:id="@+id/piechart"
         android:layout_width="286dp"
         android:layout_height="242dp"
+        android:layout_marginStart="62dp"
+        android:layout_marginLeft="62dp"
+
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="63dp"
+        android:layout_marginRight="63dp"
         android:layout_weight="1"
         android:background="#000000"
-
         android:padding="6dp"
-        tools:layout_editor_absoluteX="62dp"
-        tools:layout_editor_absoluteY="160dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView16">
+
+
+    </org.eazegraph.lib.charts.PieChart>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:background="#000000"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="415dp">
+        app:layout_constraintTop_toBottomOf="@+id/piechart">
 
         <!--Text view to use of -->
         <!-- programming languages text-->
@@ -54,7 +63,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="20dp"
-            android:background="@color/colorAccent" />
+            android:background="#FFA726" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -69,9 +78,7 @@
                 android:id="@+id/stockNameOneId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
-                android:text="R"
-                android:textColor="#FFFFFF"
+                android:textColor="#FFA726"
                 android:textSize="18sp"
                 android:typeface="monospace"
                 app:fontFamily="monospace" />
@@ -87,7 +94,7 @@
                 android:fontFamily="sans-serif-light"
                 android:text="0"
                 android:textAlignment="textEnd"
-                android:textColor="@color/design_default_color_background"
+                android:textColor="#FFA726"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:fontFamily="monospace" />
@@ -99,7 +106,7 @@
             android:layout_height="1dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:background="@color/colorPrimaryDark" />
+            android:background="#66BB6A" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -111,11 +118,11 @@
 
             <TextView
                 android:id="@+id/stockNameTwoId"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-light"
-                android:text="Python"
-                android:textColor="#FFFFFF"
+                android:textColor="#66BB6A"
                 android:textSize="18sp"
                 android:typeface="monospace"
                 app:fontFamily="monospace" />
@@ -132,7 +139,7 @@
                 android:fontFamily="sans-serif-light"
                 android:text="0"
                 android:textAlignment="textEnd"
-                android:textColor="@color/colorAccent"
+                android:textColor="#66BB6A"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:fontFamily="monospace" />
@@ -144,7 +151,7 @@
             android:layout_height="1dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:background="@color/colorPrimaryDark" />
+            android:background="#EF5350" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -155,11 +162,11 @@
             android:layout_marginBottom="10dp">
 
             <TextView
+                android:id="@+id/stockNameThreeId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-light"
-                android:text="C++"
-                android:textColor="#FFFFFF"
+                android:textColor="#EF5350"
                 android:textSize="18sp"
                 app:fontFamily="monospace" />
 
@@ -174,7 +181,7 @@
                 android:fontFamily="sans-serif-light"
                 android:text="0"
                 android:textAlignment="textEnd"
-                android:textColor="@color/colorPrimary"
+                android:textColor="#EF5350"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -185,7 +192,7 @@
             android:layout_height="1dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:background="@color/colorAccent" />
+            android:background="#29B6F6" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -196,11 +203,11 @@
             android:layout_marginBottom="10dp">
 
             <TextView
+                android:id="@+id/stockNameFourId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-light"
-                android:text="Java"
-                android:textColor="#FFFFFF"
+                android:textColor="#29B6F6"
                 android:textSize="18sp"
                 app:fontFamily="monospace" />
 
@@ -215,12 +222,25 @@
                 android:fontFamily="sans-serif-light"
                 android:text="0"
                 android:textAlignment="textEnd"
-                android:textColor="@color/colorPrimary"
+                android:textColor="#29B6F6"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
         </RelativeLayout>
 
     </LinearLayout>
+    <ImageButton
+        android:id="@+id/settingsId"
+        android:layout_width="50dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="346dp"
+        android:layout_marginLeft="346dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/settings" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
