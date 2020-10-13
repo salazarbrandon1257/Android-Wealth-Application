@@ -4,8 +4,14 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.0"
 
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
     defaultConfig {
-        applicationId "com.example.divcal"
+        applicationId "com.calc.divcal"
         minSdkVersion 15
         targetSdkVersion 30
         versionCode 1

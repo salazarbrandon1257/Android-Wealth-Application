@@ -50,8 +50,7 @@ public class portfolioActivity<TAG> extends AppCompatActivity {
 
         // Lookup the recyclerview in activity layout
         RecyclerView rvContacts = (RecyclerView) findViewById(R.id.rvStocks);
-        // Initialize contacts
-        Toast.makeText(getApplicationContext(), "List is initialized", Toast.LENGTH_SHORT).show();
+
         // Create adapter passing in the sample user data
         final StockAdapter adapter = new StockAdapter(contacts);
         // Attach the adapter to the recyclerview to populate items
@@ -72,7 +71,6 @@ public class portfolioActivity<TAG> extends AppCompatActivity {
                 String enteredShare = enteredNum.getText().toString();
 
                 adapter.add(new Stocks(enteredStock, addList(enteredStock), Double.parseDouble(enteredShare)));
-                Toast.makeText(getApplicationContext(), "Stock was added", Toast.LENGTH_SHORT).show();
                 adapter.notifyDataSetChanged();
             }
         });

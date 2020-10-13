@@ -61,10 +61,6 @@ public class ChartsActivity extends AppCompatActivity {
         //for (int i=0; i < 4; i++) {
         //    System.out.println(list.get(i));
         //}
-        if(list.size() > 0) {
-            //Toast.makeText(getApplicationContext(), list.get(0).toString(), Toast.LENGTH_SHORT).show();
-            Toast.makeText(getApplicationContext(), Double.toString(sum), Toast.LENGTH_SHORT).show();
-        }
         // Creating a method setData()
         // to set the text in text view and pie chart
         setData(list, stockMap, sum);

@@ -97,7 +97,8 @@
                 android:textColor="#FFA726"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:fontFamily="monospace" />
+                app:fontFamily="monospace"
+                android:gravity="end" />
         </RelativeLayout>
 
         <!--View to display the line-->
