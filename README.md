@@ -3,6 +3,7 @@
 - Created and published android app on Google Play Store that calculates expected growth of investments
 - Implemented API to receive real time stock prices, along with designing user interface 
 
-[Android Application Link]https://play.google.com/store/apps/details?id=com.calc.divcal)
+[Android Application Link] https://play.google.com/store/apps/details?id=com.calc.divcal)
+
 
 <br /> 
